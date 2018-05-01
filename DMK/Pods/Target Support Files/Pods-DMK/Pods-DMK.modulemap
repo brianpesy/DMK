@@ -1,0 +1,6 @@
+framework module Pods_DMK {
+  umbrella header "Pods-DMK-umbrella.h"
+
+  export *
+  module * { export * }
+}

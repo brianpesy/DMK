@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         //As the app loads, it does these.
         super.viewDidLoad()
-        print("hi\n")
+        // This is a test website for get requests. ( http://httpbin.org/get )
         Alamofire.request("https://api.androidhive.info/contacts/").responseJSON { (responseData) -> Void in //Like our get request
             if((responseData.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseData.result.value!)
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
                 print("yeet")
                 
                 for item in swiftyJsonVar["contacts"].arrayValue { //Works for all the names in the json file.
-                    print(item["name"].stringValue)
+                    print(item["id"].stringValue)
                 }
                 
                 if let resData = swiftyJsonVar["contacts"].arrayObject { //We can use this in order to get the data from the server.
@@ -41,6 +41,33 @@ class ViewController: UIViewController {
                 }
             }
         }
+        
+     //   /*POST request
+        let parameters: [String: Any] = [ //This is the JSON we'll be passing over.
+            "IdQuiz" : 102,
+            "IdUser" : "iosclient",
+            "User" : "iosclient",
+            "List": [
+                [
+                    "IdQuestion" : 5,
+                    "IdProposition": 2,
+                    "Time" : 32
+                ],
+                [
+                    "IdQuestion" : 4,
+                    "IdProposition": 3,
+                    "Time" : 9
+                ]
+            ]
+        ]
+        
+        Alamofire.request("https://httpbin.org/post", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                print(response) //The response of the post. Posting the parameters. I just can't access the website and change anything. We have sent this!
+        }
+
+     //    */
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {

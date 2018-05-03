@@ -25,11 +25,17 @@ class ViewController: UIViewController {
                 print(swiftyJsonVar)
                 print("yeet")
                 
-                if let resData = swiftyJsonVar["contacts"].arrayObject { //We can use this in order to get the data from the server.
-                    self.arrRes = resData as! [[String:AnyObject]]
-                    print("in")
-                    print(resData)
+                for item in swiftyJsonVar["contacts"].arrayValue { //Works for all the names in the json file.
+                    print(item["name"].stringValue)
                 }
+                
+                if let resData = swiftyJsonVar["contacts"].arrayObject { //We can use this in order to get the data from the server.
+                    self.arrRes = resData as! [[String:AnyObject]] //Puts all the data into an array
+//                    print("in")
+//                    print(resData)
+                }
+//                print(self.arrRes.count)
+//                print(self.arrRes[0]) //The data is in an array that we can individually access now.
                 if self.arrRes.count > 0 {
                  //   self.tblJSON.reloadData() //error here? Unexpectedly found nil.
                 }

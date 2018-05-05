@@ -120,7 +120,7 @@
                     <navigationItem key="navigationItem" id="XtA-cC-46T">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GS9-ly-FaG">
                             <connections>
-                                <action selector="cancelButton:" destination="BYZ-38-t0r" id="puL-cp-Mjp"/>
+                                <action selector="cancelButton:" destination="BYZ-38-t0r" id="hBd-Dl-HF6"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="1AN-4w-DeA">
@@ -131,7 +131,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="brandTextField" destination="bWI-7L-Hph" id="cAj-Gx-8n6"/>
-                        <outlet property="cancelButton" destination="GS9-ly-FaG" id="hNP-O3-VyL"/>
                         <outlet property="classificationNumber" destination="lJn-RM-Vb7" id="8r7-HR-7ae"/>
                         <outlet property="colorTextField" destination="AHy-kO-2nk" id="yHZ-Vk-3rZ"/>
                         <outlet property="idNumber" destination="XuY-h9-RnA" id="DaJ-bq-Ykn"/>

@@ -9,6 +9,30 @@
 import XCTest
 @testable import DMK
 
+class ClothingTests: XCTest {
+    // MARK: Clothing Class Tests
+    
+    // Confirm that the Clothing Initializer returns an Clothing object when passed valid parameters
+//    func clothingInitializationSucceeds() {
+//        let noClassification = Clothing.init(brand: "Giordano", classification: 0, color: "blue", id: 123, material: "Cotton", status: 1, weather: 2, icon: nil)
+//
+//        XCTAssertNotNil(noClassification)
+//    }
+    
+    // Confirm that the Clothing Initializer returns nil when passed negative int
+//    func clothingInitializationFails() {
+//        // Negative rating
+//        let negativeStatus = Clothing.init(brand: "Giordano", classification: -1, color: "blue", id: 123, material: "Cotton", status: 1, weather: -1, icon: nil)
+//
+//        XCTAssertNotNil(negativeStatus)
+//
+//        // Empty string
+//        let emptyBrand = Clothing.init(brand: "", classification: 1, color: "blue", id: 123, material: "Cotton", status: 1, weather: 1, icon: nil)
+//        XCTAssertNotNil(emptyBrand)
+//    }
+    
+}
+
 class DMKTests: XCTestCase {
     
     override func setUp() {

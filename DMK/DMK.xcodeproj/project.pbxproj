@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		03B5228F802B012F6B6E2770 /* Pods_DMK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00780C118DA3FB8725B68251 /* Pods_DMK.framework */; };
+		280CBC21209DE65300D369C0 /* ClothingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280CBC20209DE65300D369C0 /* ClothingViewController.swift */; };
+		28607522209D9698004F4C78 /* ClothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28607521209D9698004F4C78 /* ClothingTableViewCell.swift */; };
+		28607526209DA227004F4C78 /* Clothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28607525209DA227004F4C78 /* Clothing.swift */; };
+		28607528209DC474004F4C78 /* ClothingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28607527209DC474004F4C78 /* ClothingTableViewController.swift */; };
 		93E1FB4C17E042A0CCAE85AD /* Pods_DMKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7C8CC74EFFD3911526FDA0 /* Pods_DMKTests.framework */; };
 		E97FD8859AFECCB5892D8F1B /* Pods_DMKUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1461C55B61F50F9683D170D8 /* Pods_DMKUITests.framework */; };
 		F1AB0D362096CF1E0038D60B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB0D352096CF1E0038D60B /* AppDelegate.swift */; };
@@ -41,6 +45,10 @@
 		1461C55B61F50F9683D170D8 /* Pods_DMKUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DMKUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18DC13E224AB9F37BE6A8928 /* Pods-DMKUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMKUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DMKUITests/Pods-DMKUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1B5FB28A1F8757A47187CB36 /* Pods-DMKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DMKTests/Pods-DMKTests.release.xcconfig"; sourceTree = "<group>"; };
+		280CBC20209DE65300D369C0 /* ClothingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingViewController.swift; sourceTree = "<group>"; };
+		28607521209D9698004F4C78 /* ClothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingTableViewCell.swift; sourceTree = "<group>"; };
+		28607525209DA227004F4C78 /* Clothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clothing.swift; sourceTree = "<group>"; };
+		28607527209DC474004F4C78 /* ClothingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingTableViewController.swift; sourceTree = "<group>"; };
 		641B11F6000BB8EAD390DA88 /* Pods-DMK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DMK/Pods-DMK.debug.xcconfig"; sourceTree = "<group>"; };
 		66B4DC7F2FBEC70321D460A9 /* Pods-DMK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMK.release.xcconfig"; path = "Pods/Target Support Files/Pods-DMK/Pods-DMK.release.xcconfig"; sourceTree = "<group>"; };
 		77BFB6559B1BC49AFA6489C0 /* Pods-DMKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DMKTests/Pods-DMKTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,7 +137,11 @@
 			children = (
 				F1AB0D352096CF1E0038D60B /* AppDelegate.swift */,
 				F1AB0D372096CF1E0038D60B /* ViewController.swift */,
+				280CBC20209DE65300D369C0 /* ClothingViewController.swift */,
 				F1AB0D392096CF1E0038D60B /* Main.storyboard */,
+				28607527209DC474004F4C78 /* ClothingTableViewController.swift */,
+				28607525209DA227004F4C78 /* Clothing.swift */,
+				28607521209D9698004F4C78 /* ClothingTableViewCell.swift */,
 				F1AB0D3C2096CF1E0038D60B /* Assets.xcassets */,
 				F1AB0D3E2096CF1E0038D60B /* LaunchScreen.storyboard */,
 				F1AB0D412096CF1E0038D60B /* Info.plist */,
@@ -461,6 +473,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1AB0D382096CF1E0038D60B /* ViewController.swift in Sources */,
+				28607526209DA227004F4C78 /* Clothing.swift in Sources */,
+				280CBC21209DE65300D369C0 /* ClothingViewController.swift in Sources */,
+				28607528209DC474004F4C78 /* ClothingTableViewController.swift in Sources */,
+				28607522209D9698004F4C78 /* ClothingTableViewCell.swift in Sources */,
 				F1AB0D362096CF1E0038D60B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  DMK
 //
-//  Created by Brian Sy on 30/04/2018.
+//  Created by Group 4 on 30/04/2018.
 //  Copyright © 2018 dmk. All rights reserved.
 //
 
@@ -15,34 +15,43 @@ class ViewController: UIViewController {
     @IBOutlet var tblJSON: UITableView!
     var arrRes = [[String:AnyObject]]() //Array of dictionary
     
+    func getAPI(){
+        Alamofire.request("https://guarded-falls-36394.herokuapp.com/mobileget").responseJSON { (responseData) -> Void in //Like our get request
+            if((responseData.result.value) != nil) {
+                let json = JSON(responseData.result.value!)
+                print(json)
+                
+                if (json["status"].stringValue == "success"){
+                    //Do the code here.
+                    for item in json["message"].arrayValue {
+                        print(item)
+                        print(item["1"]["brand"].stringValue) //Works for nested now. PROBLEM: it lacks []. Presence of [] means array. Otherwise, use stringValue.
+                    }
+                    
+                }
+                
+                if let resData = json["message"].arrayObject { //We can use this in order to get the data from the server.
+                    self.arrRes = resData as! [[String:AnyObject]] //Puts all the data into an array
+                    //                    print(resData)
+                }
+//                print(self.arrRes[0]) //The data is in an array that we can individually access now.
+                if self.arrRes.count > 0 {
+                    //   self.tblJSON.reloadData() //error here? Unexpectedly found nil.
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         //As the app loads, it does these.
         super.viewDidLoad()
         // This is a test website for get requests. ( http://httpbin.org/get )
-        Alamofire.request("https://api.androidhive.info/contacts/").responseJSON { (responseData) -> Void in //Like our get request
-            if((responseData.result.value) != nil) {
-                let swiftyJsonVar = JSON(responseData.result.value!)
-                print(swiftyJsonVar)
-                print("yeet")
-                
-                for item in swiftyJsonVar["contacts"].arrayValue { //Works for all the names in the json file.
-                    print(item["id"].stringValue)
-                }
-                
-                if let resData = swiftyJsonVar["contacts"].arrayObject { //We can use this in order to get the data from the server.
-                    self.arrRes = resData as! [[String:AnyObject]] //Puts all the data into an array
-//                    print("in")
-//                    print(resData)
-                }
-//                print(self.arrRes.count)
-//                print(self.arrRes[0]) //The data is in an array that we can individually access now.
-                if self.arrRes.count > 0 {
-                 //   self.tblJSON.reloadData() //error here? Unexpectedly found nil.
-                }
-            }
-        }
+        // https://api.androidhive.info/contacts/
+        // https://guarded-falls-36394.herokuapp.com/mobileget
         
-     //   /*POST request
+        getAPI()
+        
+     //   /*POST request sample
         let parameters: [String: Any] = [ //This is the JSON we'll be passing over.
             "IdQuiz" : 102,
             "IdUser" : "iosclient",
@@ -63,7 +72,7 @@ class ViewController: UIViewController {
         
         Alamofire.request("https://httpbin.org/post", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
-                print(response) //The response of the post. Posting the parameters. I just can't access the website and change anything. We have sent this!
+//                print(response) //The response of the post. Posting the parameters. I just can't access the website and change anything. We have sent this!
         }
 
      //    */

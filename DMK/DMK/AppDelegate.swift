@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  DMK
 //
-//  Created by Brian Sy on 30/04/2018.
+//  Created by Group 4 on 30/04/2018.
 //  Copyright © 2018 dmk. All rights reserved.
 //
 

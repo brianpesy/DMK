@@ -8,6 +8,8 @@
 
 import UIKit
 import os.log
+import Alamofire
+import SwiftyJSON
 
 class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -23,8 +25,37 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
     
     var clothing: Clothing?
     
+    func getAPI(){
+        Alamofire.request("https://guarded-falls-36394.herokuapp.com/mobileget").responseJSON { (responseData) -> Void in //Like our get request
+            if((responseData.result.value) != nil) {
+                let json = JSON(responseData.result.value!)
+                print(json)
+                
+                if (json["status"].stringValue == "success"){
+                    //Do the code here.
+                    for item in json["message"].arrayValue {
+                        print(item)
+                        print(item["1"]["brand"].stringValue) //Works for nested now. Why did it not work: it lacks []. Presence of [] means array. Otherwise, use stringValue.
+                        print(item["1"]["status"].intValue)
+                    }
+                    
+                }
+                
+//                if let resData = json["message"].arrayObject { //We can use this in order to get the data from the server.
+//                    self.arrRes = resData as! [[String:AnyObject]] //Puts all the data into an array
+//                    //                    print(resData)
+//                }
+//                print(self.arrRes[0]) //The data is in an array that we can individually access now.
+//                if self.arrRes.count > 0 {
+//                    //   self.tblJSON.reloadData() //error here? Unexpectedly found nil.
+//                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAPI()
         
         // Handle the text field’s user input through delegate callbacks.
 //        nameTextField.delegate = self
@@ -66,6 +97,9 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
         let classification = 1
         let status = 2
         let weather = 2
+        
+        print(brand)
+        print(color)
         
         clothing = Clothing(brand: brand, classification: classification, color: color, id: id, material: material, status: status, weather: weather, imageIcon: imageIcon)
     }

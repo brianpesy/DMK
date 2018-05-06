@@ -7,15 +7,49 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    func getAPI(){
+        Alamofire.request("https://guarded-falls-36394.herokuapp.com/mobileget").responseJSON { (responseData) -> Void in //Like our get request
+            if((responseData.result.value) != nil) {
+                let json = JSON(responseData.result.value!)
+                print(json)
+                
+                if (json["status"].stringValue == "success"){
+                    //Do the code here.
+                    for item in json["message"].arrayValue {
+                        print(item)
+                        print(item["1"]["brand"].stringValue) //Works for nested now. Why did it not work: it lacks []. Presence of [] means array. Otherwise, use stringValue.
+                        print(item["1"]["status"].intValue)
+                    }
+                    
+                }
+                
+                //                if let resData = json["message"].arrayObject { //We can use this in order to get the data from the server.
+                //                    self.arrRes = resData as! [[String:AnyObject]] //Puts all the data into an array
+                //                    //                    print(resData)
+                //                }
+                //                print(self.arrRes[0]) //The data is in an array that we can individually access now.
+                //                if self.arrRes.count > 0 {
+                //                    //   self.tblJSON.reloadData() //error here? Unexpectedly found nil.
+                //                }
+            }
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print("yoo")
+        getAPI()
+        //After getting the data, we need to pass the variables and work on them somehow... SOMEHOW!
+        
+        
         return true
     }
 

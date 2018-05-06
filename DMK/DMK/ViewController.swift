@@ -25,7 +25,8 @@ class ViewController: UIViewController {
                     //Do the code here.
                     for item in json["message"].arrayValue {
                         print(item)
-                        print(item["1"]["brand"].stringValue) //Works for nested now. PROBLEM: it lacks []. Presence of [] means array. Otherwise, use stringValue.
+                        print(item["1"]["brand"].stringValue) //Works for nested now. Why did it not work: it lacks []. Presence of [] means array. Otherwise, use stringValue.
+                        print(item["1"]["status"].intValue)
                     }
                     
                 }
@@ -34,7 +35,7 @@ class ViewController: UIViewController {
                     self.arrRes = resData as! [[String:AnyObject]] //Puts all the data into an array
                     //                    print(resData)
                 }
-//                print(self.arrRes[0]) //The data is in an array that we can individually access now.
+                print(self.arrRes[0]) //The data is in an array that we can individually access now.
                 if self.arrRes.count > 0 {
                     //   self.tblJSON.reloadData() //error here? Unexpectedly found nil.
                 }

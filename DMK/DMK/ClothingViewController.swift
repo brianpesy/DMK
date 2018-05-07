@@ -22,6 +22,7 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
     @IBOutlet weak var materialTextField: UITextField!
     @IBOutlet weak var statusNumber: UILabel!
     @IBOutlet weak var classificationNumber: UILabel!
+    @IBOutlet weak var subclassNumber: UILabel!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var clothing: Clothing?
@@ -78,6 +79,7 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
             materialTextField.text = clothing.material
             statusNumber.text = String(clothing.status)
             classificationNumber.text = String(clothing.classifiction)
+            subclassNumber.text = String(clothing.subclass)
         }
         updateSaveButtonState()
     }

@@ -13,6 +13,7 @@ class Clothing {
     // MARK: Properties
     var brand: String
     var classifiction: Int
+    var subclass: Int
     var color: String
     var id: Int
     var material: String
@@ -21,7 +22,7 @@ class Clothing {
     var imageIcon: UIImage?
     
     // MARK: Initialization
-    init?(brand: String, classification: Int, color: String, id: Int, material: String, status: Int, weather: Int, imageIcon: UIImage?) {
+    init?(brand: String, classification: Int, subclass: Int,color: String, id: Int, material: String, status: Int, weather: Int, imageIcon: UIImage?) {
         
         // Initialization should fail if no string or negative integer
         if brand.isEmpty || classification < 0 || color.isEmpty || id < 0 || material.isEmpty || status < 0 || weather < 0 {
@@ -42,6 +43,7 @@ class Clothing {
         // Initialize stored properties
         self.brand = brand
         self.classifiction = classification
+        self.subclass = subclass
         self.color = color
         self.id = id
         self.material = material

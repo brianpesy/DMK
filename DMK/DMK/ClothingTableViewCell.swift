@@ -11,8 +11,11 @@ import UIKit
 class ClothingTableViewCell: UITableViewCell {
     
     // MARK: Properties
-    @IBOutlet weak var clothLabel: UILabel!
+    @IBOutlet weak var clothBrand: UILabel!
     @IBOutlet weak var clothIcon: UIImageView!
+    @IBOutlet weak var clothClassification: UILabel!
+    @IBOutlet weak var clothSubclass: UILabel!
+    @IBOutlet weak var clothStatus: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

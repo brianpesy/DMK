@@ -14,6 +14,7 @@ import SwiftyJSON
 class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: Properties
+    @IBOutlet weak var clothingTitle: UILabel!
     @IBOutlet weak var imageIcon: UIImageView!
     @IBOutlet weak var idNumber: UILabel!
     @IBOutlet weak var brandTextField: UITextField!
@@ -55,13 +56,37 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Use the edit button item provided by the table view controller.
+        
         getAPI()
         
         // Handle the text field’s user input through delegate callbacks.
-//        nameTextField.delegate = self
+        // nameTextField.delegate = self
+        brandTextField.delegate = self
+        colorTextField.delegate = self
+        materialTextField.delegate = self
+        
+        // Set up views if editing an existing Meal.
+        if let clothing = clothing {
+            navigationItem.title = clothing.brand
+            clothingTitle.text = clothing.brand
+            imageIcon.image = clothing.imageIcon
+            idNumber.text = String(clothing.id)
+            brandTextField.text = clothing.brand
+            colorTextField.text = clothing.color
+            materialTextField.text = clothing.material
+            statusNumber.text = String(clothing.status)
+            classificationNumber.text = String(clothing.classifiction)
+        }
+        updateSaveButtonState()
     }
     
     //MARK: UITextFieldDelegate
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing.
+        saveButton.isEnabled = false
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
@@ -71,11 +96,26 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
     
     func textFieldDidEndEditing(_ textField: UITextField) {
 //        mealNameLabel.text = textField.text
+        updateSaveButtonState()
+        navigationItem.title = textField.text
     }
     
     // MARK: Navigations
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
+        let isPresentingInAddClothingMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddClothingMode {
+            dismiss(animated: true, completion: nil)
+        }
+            
+        else if let owningNavigationController = navigationController{
+            owningNavigationController.popViewController(animated: true)
+        }
+        
+        else {
+            fatalError("The ClothingViewController is not inside a navigation controller.")
+        }
     }
     
     
@@ -95,12 +135,20 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
         let color = colorTextField.text ?? ""
         let material = materialTextField.text ?? ""
         let classification = 1
+        let subclass = 8
         let status = 2
         let weather = 2
         
         print(brand)
         print(color)
         
-        clothing = Clothing(brand: brand, classification: classification, color: color, id: id, material: material, status: status, weather: weather, imageIcon: imageIcon)
+        clothing = Clothing(brand: brand, classification: classification, subclass: subclass, color: color, id: id, material: material, status: status, weather: weather, imageIcon: imageIcon)
+    }
+    
+    // MARK: Private Methods
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+        let text = brandTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
 }

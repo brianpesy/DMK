@@ -77,9 +77,35 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
             brandTextField.text = clothing.brand
             colorTextField.text = clothing.color
             materialTextField.text = clothing.material
-            statusNumber.text = String(clothing.status)
-            classificationNumber.text = String(clothing.classifiction)
-            subclassNumber.text = String(clothing.subclass)
+//            statusNumber.text = String(clothing.status)
+//            classificationNumber.text = String(clothing.classifiction)
+//            subclassNumber.text = String(clothing.subclass)
+            
+            switch clothing.classifiction {
+            case 1: classificationNumber.text = "Top"
+            case 2: classificationNumber.text = "Bottom"
+            case 3: classificationNumber.text = "Dress"
+            default: classificationNumber.text = String(clothing.classifiction)
+            }
+            
+            switch clothing.subclass {
+            case 1: subclassNumber.text = "Short Sleeves"
+            case 2: subclassNumber.text = "No sleeves"
+            case 3: subclassNumber.text = "Sweater"
+            case 4: subclassNumber.text = "Jacket"
+            case 5: subclassNumber.text = "Shorts"
+            case 6: subclassNumber.text = "Pants"
+            case 7: subclassNumber.text = "Skirt"
+            case 8: subclassNumber.text = "Dress"
+            default: subclassNumber.text = String(clothing.subclass)
+            }
+            
+            switch clothing.status {
+            case 1: statusNumber.text = "Out of the closet"
+            case 2: statusNumber.text = "In of the closet"
+            default: statusNumber.text = String(clothing.status)
+            }
+
         }
         updateSaveButtonState()
     }
@@ -97,7 +123,6 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-//        mealNameLabel.text = textField.text
         updateSaveButtonState()
         navigationItem.title = textField.text
     }
@@ -122,6 +147,7 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
     
     
     // This method lets you configure a view controller before it's presented.
+    // ADD FUNCTIONALITY
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         

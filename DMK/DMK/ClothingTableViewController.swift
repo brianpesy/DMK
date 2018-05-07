@@ -95,6 +95,11 @@ class ClothingTableViewController: UITableViewController {
             // Delete the row from the data source
             clothes.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            print("deleting this file")
+            
+            //PUT DELETING FUNCTION IN HERE
+            
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -159,6 +164,9 @@ class ClothingTableViewController: UITableViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 clothes[selectedIndexPath.row] = clothing
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                print("hello")
+                
+                //UPDATE GOES IN HERE
             }
             
             // Add a new garment.

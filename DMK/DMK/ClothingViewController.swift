@@ -31,14 +31,14 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
         Alamofire.request("https://guarded-falls-36394.herokuapp.com/mobileget").responseJSON { (responseData) -> Void in //Like our get request
             if((responseData.result.value) != nil) {
                 let json = JSON(responseData.result.value!)
-                print(json)
+//                print(json)
                 
                 if (json["status"].stringValue == "success"){
                     //Do the code here.
                     for item in json["message"].arrayValue {
-                        print(item)
-                        print(item["1"]["brand"].stringValue) //Works for nested now. Why did it not work: it lacks []. Presence of [] means array. Otherwise, use stringValue.
-                        print(item["1"]["status"].intValue)
+//                        print(item)
+//                        print(item["1"]["brand"].stringValue) //Works for nested now. Why did it not work: it lacks []. Presence of [] means array. Otherwise, use stringValue.
+//                        print(item["1"]["status"].intValue)
                     }
                     
                 }
@@ -167,8 +167,24 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
         let status = 2
         let weather = 2
         
-        print(brand)
-        print(color)
+//        print(brand)
+//        print(color)
+        
+        let parameters: [String: Any] = [ //This is the JSON we'll be passing over.
+            "classification" : 2,
+            "subclass" : 3,
+            "brand" : brand,
+            "material" : material,
+            "color" : color,
+            "status" : 1,
+            "weather" : 2
+
+        ]
+        
+        Alamofire.request("https://damitan-mo-ko.herokuapp.com/mobileadd", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                //                print(response) //The response of the post. Posting the parameters. I just can't access the website and change anything. We have sent this!
+        }
         
         clothing = Clothing(brand: brand, classification: classification, subclass: subclass, color: color, id: id, material: material, status: status, weather: weather, imageIcon: imageIcon)
     }

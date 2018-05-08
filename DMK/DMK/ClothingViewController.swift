@@ -10,9 +10,10 @@ import UIKit
 import os.log
 import Alamofire
 import SwiftyJSON
+import UIDropDown
 
 class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+
     //MARK: Properties
     @IBOutlet weak var clothingTitle: UILabel!
     @IBOutlet weak var imageIcon: UIImageView!
@@ -25,7 +26,14 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
     @IBOutlet weak var subclassNumber: UILabel!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    @IBOutlet weak var segmentedClassification: UISegmentedControl!
+    @IBOutlet weak var segmentedSubclass: UISegmentedControl!
+    
+    //    var dropClassification: UIDropDown!
     var clothing: Clothing?
+    var classification: Int = 1
+    var subclass: Int = 1
+    var iconViaSubclass: String = "defaultPhoto"
     
     func getAPI(){
         Alamofire.request("https://guarded-falls-36394.herokuapp.com/mobileget").responseJSON { (responseData) -> Void in //Like our get request
@@ -36,7 +44,7 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
                 if (json["status"].stringValue == "success"){
                     //Do the code here.
                     for item in json["message"].arrayValue {
-//                        print(item)
+                        print(item)
 //                        print(item["1"]["brand"].stringValue) //Works for nested now. Why did it not work: it lacks []. Presence of [] means array. Otherwise, use stringValue.
 //                        print(item["1"]["status"].intValue)
                     }
@@ -68,6 +76,22 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
         colorTextField.delegate = self
         materialTextField.delegate = self
         
+        // ===================================================================================================
+        // TESTING FOR DROPDOWN
+        
+//        dropClassification = UIDropDown(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+//        dropClassification.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.midY)
+//        dropClassification.placeholder = "Select classification"
+//        dropClassification.options = ["Top", "Bottom", "Dress"]
+//        dropClassification.didSelect { (option, index) in
+//            self.classificationNumber.text = option
+//            print("You just select: \(option) at index: \(index)")
+//        }
+//        self.view.addSubview(dropClassification)
+
+        // ===================================================================================================
+        
+        
         // Set up views if editing an existing Meal.
         if let clothing = clothing {
             navigationItem.title = clothing.brand
@@ -77,35 +101,39 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
             brandTextField.text = clothing.brand
             colorTextField.text = clothing.color
             materialTextField.text = clothing.material
+            
 //            statusNumber.text = String(clothing.status)
 //            classificationNumber.text = String(clothing.classifiction)
 //            subclassNumber.text = String(clothing.subclass)
             
-            switch clothing.classifiction {
-            case 1: classificationNumber.text = "Top"
-            case 2: classificationNumber.text = "Bottom"
-            case 3: classificationNumber.text = "Dress"
-            default: classificationNumber.text = String(clothing.classifiction)
-            }
+//            switch clothing.classifiction {
+//            case 1: classificationNumber.text = "Top"
+//            case 2: classificationNumber.text = "Bottom"
+//            case 3: classificationNumber.text = "Dress"
+//            default: classificationNumber.text = String(clothing.classifiction)
+//            }
             
-            switch clothing.subclass {
-            case 1: subclassNumber.text = "Short Sleeves"
-            case 2: subclassNumber.text = "No sleeves"
-            case 3: subclassNumber.text = "Sweater"
-            case 4: subclassNumber.text = "Jacket"
-            case 5: subclassNumber.text = "Shorts"
-            case 6: subclassNumber.text = "Pants"
-            case 7: subclassNumber.text = "Skirt"
-            case 8: subclassNumber.text = "Dress"
-            default: subclassNumber.text = String(clothing.subclass)
-            }
+            segmentedClassification.selectedSegmentIndex = (clothing.classifiction)-1
+            
+//            switch clothing.subclass {
+//            case 1: subclassNumber.text = "Short Sleeves"
+//            case 2: subclassNumber.text = "No sleeves"
+//            case 3: subclassNumber.text = "Sweater"
+//            case 4: subclassNumber.text = "Jacket"
+//            case 5: subclassNumber.text = "Shorts"
+//            case 6: subclassNumber.text = "Pants"
+//            case 7: subclassNumber.text = "Skirt"
+//            case 8: subclassNumber.text = "Dress"
+//            default: subclassNumber.text = String(clothing.subclass)
+//            }
+
+            segmentedSubclass.selectedSegmentIndex = (clothing.subclass)-1
             
             switch clothing.status {
             case 1: statusNumber.text = "Out of the closet"
             case 2: statusNumber.text = "In of the closet"
             default: statusNumber.text = String(clothing.status)
             }
-
         }
         updateSaveButtonState()
     }
@@ -124,7 +152,7 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateSaveButtonState()
-        navigationItem.title = textField.text
+//        navigationItem.title = textField.text
     }
     
     // MARK: Navigations
@@ -162,8 +190,8 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
         let brand = brandTextField.text ?? ""
         let color = colorTextField.text ?? ""
         let material = materialTextField.text ?? ""
-        let classification = 1
-        let subclass = 8
+//        let classification = 1
+//        let subclass = 8
         let status = 2
         let weather = 2
         
@@ -178,12 +206,11 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
             "color" : color,
             "status" : 1,
             "weather" : 2
-
         ]
         
         Alamofire.request("https://damitan-mo-ko.herokuapp.com/mobileadd", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
-                //                print(response) //The response of the post. Posting the parameters. I just can't access the website and change anything. We have sent this!
+                //  print(response) //The response of the post. Posting the parameters. I just can't access the website and change anything. We have sent this!
         }
         
         clothing = Clothing(brand: brand, classification: classification, subclass: subclass, color: color, id: id, material: material, status: status, weather: weather, imageIcon: imageIcon)
@@ -195,4 +222,29 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
         let text = brandTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
     }
+    
+    @IBAction func chooseClassification(_ sender: UISegmentedControl) {
+        
+        switch segmentedClassification.selectedSegmentIndex {
+            case 0: classification = 1
+            case 1: classification = 2
+            case 2: classification = 3
+            default: classification = 1
+        }
+    }
+    
+    @IBAction func chooseSubclass(_ sender: UISegmentedControl) {
+        switch segmentedSubclass.selectedSegmentIndex {
+        case 0: subclass = 1; iconViaSubclass = "shirt"
+        case 1: subclass = 2; iconViaSubclass = "sleeveless"
+        case 2: subclass = 3; iconViaSubclass = "jacket"
+        case 3: subclass = 4; iconViaSubclass = "jacket"
+        case 4: subclass = 5; iconViaSubclass = "shorts"
+        case 5: subclass = 6; iconViaSubclass = "pants"
+        case 6: subclass = 7; iconViaSubclass = "skirt"
+        case 7: subclass = 8; iconViaSubclass = "dress"
+        default: subclass = 1; iconViaSubclass = "defaultPhoto"
+        }
+    }
+    
 }

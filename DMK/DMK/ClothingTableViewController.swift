@@ -186,23 +186,23 @@ class ClothingTableViewController: UITableViewController {
         let photo3 = UIImage(named: "sleeveless")
         let photo4 = UIImage(named: "pants")
         
-        guard let dress = Clothing(brand: "Cotton On", classification: 3, subclass: 8, color: "Blue", id: 1, material: "Material1", status: 1, weather: 1, imageIcon: photo1) else {
+        guard let dress = Clothing(brand: "Cotton On", classification: 3, subclass: 8, color: "Blue", id: 21653, material: "Material1", status: 1, weather: 1, imageIcon: photo1) else {
             fatalError("Unable to instantiate dress")
         }
         
-        guard let jacket = Clothing(brand: "Uniqlo", classification: 1, subclass: 4, color: "Blue", id: 1, material: "Material1", status: 2, weather: 1, imageIcon: photo2) else {
+        guard let jacket = Clothing(brand: "Uniqlo", classification: 1, subclass: 4, color: "Blue", id: 12644, material: "Material1", status: 2, weather: 1, imageIcon: photo2) else {
             fatalError("Unable to instantiate jacket")
         }
         
-        guard let sleeveless = Clothing(brand: "Ukay", classification: 1, subclass: 2, color: "Blue", id: 1, material: "Material1", status: 1, weather: 1, imageIcon: photo3) else {
-            fatalError("Unable to instantiate jacket")
+        guard let sleeveless = Clothing(brand: "Ukay", classification: 1, subclass: 2, color: "Blue", id: 34663, material: "Material1", status: 1, weather: 1, imageIcon: photo3) else {
+            fatalError("Unable to instantiate sleeveless")
         }
         
-        guard let pants = Clothing(brand: "H&M", classification: 2, subclass: 6, color: "Blue", id: 1, material: "Material1", status: 2, weather: 2, imageIcon: photo4) else {
+        guard let pants = Clothing(brand: "H&M", classification: 2, subclass: 6, color: "Blue", id: 23474, material: "Material1", status: 2, weather: 2, imageIcon: photo4) else {
             fatalError("Unable to instantiate pants")
         }
-        guard let shirt = Clothing(brand: "Zara", classification: 1, subclass: 1, color: "Blue", id: 1, material: "Material1", status: 1, weather: 1, imageIcon: UIImage(named: "shirt2")) else {
-                fatalError("Unable to instantiate pants")
+        guard let shirt = Clothing(brand: "Zara", classification: 1, subclass: 1, color: "Blue", id: 90485, material: "Material1", status: 1, weather: 1, imageIcon: UIImage(named: "shirt2")) else {
+                fatalError("Unable to instantiate shirt")
         }
         clothes += [dress, jacket, sleeveless, pants, shirt]
     }

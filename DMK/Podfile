@@ -7,7 +7,8 @@ target 'DMK' do
   #use_frameworks!
   pod 'Alamofire'
   pod 'SwiftyJSON'
-
+  pod 'UIDropDown'
+  
   # Pods for DMK
 
   target 'DMKTests' do

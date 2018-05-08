@@ -10,10 +10,18 @@ import UIKit
 import os.log
 import Alamofire
 import SwiftyJSON
-import UIDropDown
 
 class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    var id = 123
+    var brand = ""
+    var color = ""
+    var material = ""
+//    var classification = 1
+//    var subclass = 8
+    var status = 2
+    var weather = 2
+    
     //MARK: Properties
     @IBOutlet weak var clothingTitle: UILabel!
     @IBOutlet weak var imageIcon: UIImageView!
@@ -61,6 +69,9 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
 //                }
             }
         }
+    }
+    @IBAction func refreshButton(_ sender: Any) {
+        print("hello!!!")
     }
     
     override func viewDidLoad() {
@@ -185,22 +196,24 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
             return
         }
         
+        //ISSUE: it keeps updating. Maybe see if the ID is there already and then work around that one. 
+        
         let imageIcon = self.imageIcon.image
-        let id = 123
-        let brand = brandTextField.text ?? ""
-        let color = colorTextField.text ?? ""
-        let material = materialTextField.text ?? ""
-//        let classification = 1
-//        let subclass = 8
-        let status = 2
-        let weather = 2
+        id = 123
+        brand = brandTextField.text ?? ""
+        color = colorTextField.text ?? ""
+        material = materialTextField.text ?? ""
+//        classification = 1
+//        subclass = 8
+        status = 2
+        weather = 2
         
 //        print(brand)
 //        print(color)
         
         let parameters: [String: Any] = [ //This is the JSON we'll be passing over.
-            "classification" : 2,
-            "subclass" : 3,
+            "classification" : classification,
+            "subclass" : subclass,
             "brand" : brand,
             "material" : material,
             "color" : color,
@@ -210,8 +223,9 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
         
         Alamofire.request("https://damitan-mo-ko.herokuapp.com/mobileadd", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
-                //  print(response) //The response of the post. Posting the parameters. I just can't access the website and change anything. We have sent this!
+                  print(response) //It responds with the ID of the clothing item in question.
         }
+        
         
         clothing = Clothing(brand: brand, classification: classification, subclass: subclass, color: color, id: id, material: material, status: status, weather: weather, imageIcon: imageIcon)
     }

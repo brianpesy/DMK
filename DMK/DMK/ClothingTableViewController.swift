@@ -8,6 +8,8 @@
 
 import UIKit
 import os.log
+import Alamofire
+import SwiftyJSON
 
 class ClothingTableViewController: UITableViewController {
   
@@ -26,7 +28,151 @@ class ClothingTableViewController: UITableViewController {
         // Load sample data
         loadSampleClothes()
     }
+    
+    @IBAction func refreshButton(_ sender: Any) {
+        print("hello!")
+        //Do GET here. GET all the data, put it into a data structure.
+        
+            Alamofire.request("https://damitan-mo-ko.herokuapp.com/mobileget").responseJSON { (responseData) -> Void in //Like our get request
+                if((responseData.result.value) != nil) {
+                    var i = 0
+                    var arr = [[String]]()
+                    /* Appending properly and accessing individual elements
+                    arr.append([])
+                    arr[0].append("hello")
+                    arr.append([])
+                    print(arr)
+                    */
+                    
+                    /*color, status, id, weather, classification, material, brand */
+                    // Read classification for the kind of clothing. It is in that order. arr[0][1] accesses the array's first instance's 2nd field. 
+                    
+                    let json = JSON(responseData.result.value!)
+                    print(json)
+                    
+                    //Do the code here.
+                    for item in json["sweater"].arrayValue {
+                        arr.append([])
+                        print("sweater")
+                        print(item)
+                        arr[i].append(item["color"].stringValue)
+                        arr[i].append(item["status"].stringValue)
+                        arr[i].append(item["id"].stringValue)
+                        arr[i].append(item["weather"].stringValue)
+                        arr[i].append(item["classification"].stringValue)
+                        arr[i].append(item["material"].stringValue)
+                        arr[i].append(item["brand"].stringValue)
+                        print(arr)
+                        i = i + 1
+                    }
+                    for item in json["dress"].arrayValue{
+                        arr.append([])
+                        print("dress")
+                        print(item)
+                        arr[i].append(item["color"].stringValue)
+                        arr[i].append(item["status"].stringValue)
+                        arr[i].append(item["id"].stringValue)
+                        arr[i].append(item["weather"].stringValue)
+                        arr[i].append(item["classification"].stringValue)
+                        arr[i].append(item["material"].stringValue)
+                        arr[i].append(item["brand"].stringValue)
+                        print(arr)
+                        i = i + 1
+                    }
+                    for item in json["skirt"].arrayValue{
+                        arr.append([])
+                        print("skirt")
+                        arr[i].append(item["color"].stringValue)
+                        arr[i].append(item["status"].stringValue)
+                        arr[i].append(item["id"].stringValue)
+                        arr[i].append(item["weather"].stringValue)
+                        arr[i].append(item["classification"].stringValue)
+                        arr[i].append(item["material"].stringValue)
+                        arr[i].append(item["brand"].stringValue)
+                        print(arr)
+                        i = i + 1
 
+                    }
+
+                    for item in json["short sleeves"].arrayValue{
+                        arr.append([])
+                        print("short sleeves")
+                        arr[i].append(item["color"].stringValue)
+                        arr[i].append(item["status"].stringValue)
+                        arr[i].append(item["id"].stringValue)
+                        arr[i].append(item["weather"].stringValue)
+                        arr[i].append(item["classification"].stringValue)
+                        arr[i].append(item["material"].stringValue)
+                        arr[i].append(item["brand"].stringValue)
+                        print(arr)
+                        i = i + 1
+
+                    }
+                    
+                    for item in json["pants"].arrayValue{
+                        arr.append([])
+                        print("pants")
+                        arr[i].append(item["color"].stringValue)
+                        arr[i].append(item["status"].stringValue)
+                        arr[i].append(item["id"].stringValue)
+                        arr[i].append(item["weather"].stringValue)
+                        arr[i].append(item["classification"].stringValue)
+                        arr[i].append(item["material"].stringValue)
+                        arr[i].append(item["brand"].stringValue)
+                        print(arr)
+                        i = i + 1
+
+                    }
+
+                    for item in json["jacket"].arrayValue{
+                        arr.append([])
+                        print("jacket")
+                        arr[i].append(item["color"].stringValue)
+                        arr[i].append(item["status"].stringValue)
+                        arr[i].append(item["id"].stringValue)
+                        arr[i].append(item["weather"].stringValue)
+                        arr[i].append(item["classification"].stringValue)
+                        arr[i].append(item["material"].stringValue)
+                        arr[i].append(item["brand"].stringValue)
+                        print(arr)
+                        i = i + 1
+
+                    }
+
+                    for item in json["shorts"].arrayValue{
+                        arr.append([])
+                        print("shorts")
+                        arr[i].append(item["color"].stringValue)
+                        arr[i].append(item["status"].stringValue)
+                        arr[i].append(item["id"].stringValue)
+                        arr[i].append(item["weather"].stringValue)
+                        arr[i].append(item["classification"].stringValue)
+                        arr[i].append(item["material"].stringValue)
+                        arr[i].append(item["brand"].stringValue)
+                        print(arr)
+                        i = i + 1
+
+                    }
+
+                    for item in json["no sleeves"].arrayValue{
+                        arr.append([])
+                        print("no sleeves")
+                        arr[i].append(item["color"].stringValue)
+                        arr[i].append(item["status"].stringValue)
+                        arr[i].append(item["id"].stringValue)
+                        arr[i].append(item["weather"].stringValue)
+                        arr[i].append(item["classification"].stringValue)
+                        arr[i].append(item["material"].stringValue)
+                        arr[i].append(item["brand"].stringValue)
+                        print(arr)
+                        i = i + 1
+
+                    }
+                    
+                }
+            }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -98,7 +244,14 @@ class ClothingTableViewController: UITableViewController {
             print("deleting this file")
             
             //PUT DELETING FUNCTION IN HERE
+            let parameters: [String: Any] = [ //This is the JSON we'll be passing over.
+                "id" : 65
+            ]
             
+            Alamofire.request("https://damitan-mo-ko.herokuapp.com/delete", method: .delete, parameters: parameters, encoding: JSONEncoding.default)
+                .responseJSON { response in
+//                    print(response) //It responds with the ID of the clothing item in question.
+            }
             
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -206,4 +359,6 @@ class ClothingTableViewController: UITableViewController {
         }
         clothes += [dress, jacket, sleeveless, pants, shirt]
     }
+    
+    
 }

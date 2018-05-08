@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TMM-tU-cIN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TMM-tU-cIN">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -354,13 +355,24 @@
                             <outlet property="delegate" destination="FYh-QE-X9y" id="iEo-bQ-YN4"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="6GV-ne-QdC"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="DMK Closet" id="SVg-0o-s6k">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vx9-H4-RbO">
-                            <connections>
-                                <segue destination="gaq-Tg-zX8" kind="presentation" identifier="AddClothing" id="biP-Lm-5JW"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="vx9-H4-RbO">
+                                <connections>
+                                    <segue destination="gaq-Tg-zX8" kind="presentation" identifier="AddClothing" id="biP-Lm-5JW"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Refresh" id="lrU-Pl-KOj">
+                                <connections>
+                                    <action selector="refreshButton:" destination="FYh-QE-X9y" id="inZ-ey-KHl"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="OV7-3y-hy7" id="ZYB-rd-wUV"/>
                     </connections>
@@ -387,6 +399,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jmw-se-uCU">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="FYh-QE-X9y" kind="relationship" relationship="rootViewController" id="VvH-bG-egm"/>
                     </connections>
@@ -405,6 +420,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jBE-n0-vF2">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Qdl-5P-gI9"/>
                     </connections>

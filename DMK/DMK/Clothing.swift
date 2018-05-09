@@ -25,10 +25,13 @@ class Clothing {
     init?(brand: String, classification: Int, subclass: Int,color: String, id: Int, material: String, status: Int, weather: Int, imageIcon: UIImage?) {
         
         // Initialization should fail if no string or negative integer
-        if brand.isEmpty || classification < 0 || color.isEmpty || id < 0 || material.isEmpty || status < 0 || weather < 0 {
+//        if brand.isEmpty || classification < 0 || color.isEmpty || id < 0 || material.isEmpty || status < 0 || weather < 0 {
+//            return nil
+//        }
+        
+        if brand.isEmpty {
             return nil
         }
-        
         // Modify if condition above with something like this:
 //        // The name must not be empty
 //        guard !brand.isEmpty else {

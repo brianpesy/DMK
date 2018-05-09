@@ -225,8 +225,7 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
             .responseJSON { response in
                   print(response) //It responds with the ID of the clothing item in question.
         }
-        
-        
+
         clothing = Clothing(brand: brand, classification: classification, subclass: subclass, color: color, id: id, material: material, status: status, weather: weather, imageIcon: imageIcon)
     }
     

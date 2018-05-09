@@ -14,6 +14,7 @@
 		28607528209DC474004F4C78 /* ClothingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28607527209DC474004F4C78 /* ClothingTableViewController.swift */; };
 		93E1FB4C17E042A0CCAE85AD /* Pods_DMKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7C8CC74EFFD3911526FDA0 /* Pods_DMKTests.framework */; };
 		E97FD8859AFECCB5892D8F1B /* Pods_DMKUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1461C55B61F50F9683D170D8 /* Pods_DMKUITests.framework */; };
+		F169575320A3265A00B01D91 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169575220A3265A00B01D91 /* LocationViewController.swift */; };
 		F1AB0D362096CF1E0038D60B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB0D352096CF1E0038D60B /* AppDelegate.swift */; };
 		F1AB0D382096CF1E0038D60B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AB0D372096CF1E0038D60B /* ViewController.swift */; };
 		F1AB0D3B2096CF1E0038D60B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1AB0D392096CF1E0038D60B /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		66B4DC7F2FBEC70321D460A9 /* Pods-DMK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMK.release.xcconfig"; path = "Pods/Target Support Files/Pods-DMK/Pods-DMK.release.xcconfig"; sourceTree = "<group>"; };
 		77BFB6559B1BC49AFA6489C0 /* Pods-DMKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DMKTests/Pods-DMKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EB7C8CC74EFFD3911526FDA0 /* Pods_DMKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DMKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F169575220A3265A00B01D91 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		F1AB0D322096CF1E0038D60B /* DMK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DMK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AB0D352096CF1E0038D60B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1AB0D372096CF1E0038D60B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				F1AB0D372096CF1E0038D60B /* ViewController.swift */,
 				280CBC20209DE65300D369C0 /* ClothingViewController.swift */,
 				F1AB0D392096CF1E0038D60B /* Main.storyboard */,
+				F169575220A3265A00B01D91 /* LocationViewController.swift */,
 				28607527209DC474004F4C78 /* ClothingTableViewController.swift */,
 				28607525209DA227004F4C78 /* Clothing.swift */,
 				28607521209D9698004F4C78 /* ClothingTableViewCell.swift */,
@@ -472,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F169575320A3265A00B01D91 /* LocationViewController.swift in Sources */,
 				F1AB0D382096CF1E0038D60B /* ViewController.swift in Sources */,
 				28607526209DA227004F4C78 /* Clothing.swift in Sources */,
 				280CBC21209DE65300D369C0 /* ClothingViewController.swift in Sources */,

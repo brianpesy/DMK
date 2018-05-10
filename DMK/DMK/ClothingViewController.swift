@@ -212,8 +212,8 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
 //        print(color)
         
         let parameters: [String: Any] = [ //This is the JSON we'll be passing over.
-            "classification" : classification,
-            "subclass" : subclass,
+            "classification" :  segmentedClassification.selectedSegmentIndex+1,
+            "subclass" : segmentedSubclass.selectedSegmentIndex+1,
             "brand" : brand,
             "material" : material,
             "color" : color,
@@ -224,6 +224,8 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
         Alamofire.request("https://damitan-mo-ko.herokuapp.com/mobileadd", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                   print(response) //It responds with the ID of the clothing item in question.
+                print("Send new garment to server")
+                print(parameters)
         }
 
         clothing = Clothing(brand: brand, classification: classification, subclass: subclass, color: color, id: id, material: material, status: status, weather: weather, imageIcon: imageIcon)

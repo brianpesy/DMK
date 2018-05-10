@@ -71,7 +71,7 @@ class ClothingTableViewController: UITableViewController {
                         arr[i].append(item["brand"].stringValue)
 //                        print(arr)
                         
-                        let sweater = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:Int(arr[i][4])!, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "jacket"))
+                        let sweater = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:3, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "jacket"))
                         
                         let newIndexPath = IndexPath(row: self.clothes.count, section: 0)
                         print(self.clothes.count)
@@ -93,7 +93,7 @@ class ClothingTableViewController: UITableViewController {
                         arr[i].append(item["brand"].stringValue)
 //                        print(arr)
                         
-                        let dress = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:Int(arr[i][4])!, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "dress"))
+                        let dress = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:8, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "dress"))
                         
                         let newIndexPath = IndexPath(row: self.clothes.count, section: 0)
                         print(self.clothes.count)
@@ -115,7 +115,7 @@ class ClothingTableViewController: UITableViewController {
                         arr[i].append(item["brand"].stringValue)
 //                        print(arr)
                         
-                        let skirt = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:Int(arr[i][4])!, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "skirt"))
+                        let skirt = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:7, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "skirt"))
                         
                         let newIndexPath = IndexPath(row: self.clothes.count, section: 0)
                         self.clothes.append(skirt!)
@@ -137,7 +137,7 @@ class ClothingTableViewController: UITableViewController {
                         arr[i].append(item["brand"].stringValue) //6
 //                        print(arr)
 
-                        let shortSleeve = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:Int(arr[i][4])!, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "shirt"))
+                        let shortSleeve = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:1, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "shirt"))
                         
                         let newIndexPath = IndexPath(row: self.clothes.count, section: 0)
                         self.clothes.append(shortSleeve!)
@@ -158,7 +158,7 @@ class ClothingTableViewController: UITableViewController {
                         arr[i].append(item["brand"].stringValue)
 //                        print(arr)
                         
-                        let pants = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:Int(arr[i][4])!, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "pants"))
+                        let pants = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:6, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "pants"))
                         
                         let newIndexPath = IndexPath(row: self.clothes.count, section: 0)
                         self.clothes.append(pants!)
@@ -180,7 +180,7 @@ class ClothingTableViewController: UITableViewController {
                         arr[i].append(item["brand"].stringValue)
 //                        print(arr)
                         
-                        let jacket = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:Int(arr[i][4])!, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "jacket"))
+                        let jacket = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:4, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "jacket"))
                         
                         let newIndexPath = IndexPath(row: self.clothes.count, section: 0)
                         self.clothes.append(jacket!)
@@ -202,7 +202,7 @@ class ClothingTableViewController: UITableViewController {
                         arr[i].append(item["brand"].stringValue)
 //                        print(arr)
                         
-                        let shorts = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:Int(arr[i][4])!, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "shorts"))
+                        let shorts = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass: 5, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "shorts"))
                         
                         let newIndexPath = IndexPath(row: self.clothes.count, section: 0)
                         self.clothes.append(shorts!)
@@ -224,7 +224,7 @@ class ClothingTableViewController: UITableViewController {
                         arr[i].append(item["brand"].stringValue)
 //                        print(arr)
                         
-                        let sleeveless = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:Int(arr[i][4])!, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "sleeveless"))
+                        let sleeveless = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:2, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: Int(arr[i][3])!, imageIcon: UIImage(named: "sleeveless"))
                         
                         let newIndexPath = IndexPath(row: self.clothes.count, section: 0)
                         self.clothes.append(sleeveless!)
@@ -332,19 +332,20 @@ class ClothingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            clothes.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            print("deleting this file")
+            print("Removing garment")
             
             //PUT DELETING FUNCTION IN HERE
             let parameters: [String: Any] = [ //This is the JSON we'll be passing over.
-                "id" : 72
+                "id" : clothes[indexPath.row].id
             ]
             
             Alamofire.request("https://damitan-mo-ko.herokuapp.com/delete", method: .delete, parameters: parameters, encoding: JSONEncoding.default)
                 .responseJSON { response in
 //                    print(response) //It responds with the ID of the clothing item in question.
             }
+            
+            clothes.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

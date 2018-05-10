@@ -265,6 +265,7 @@ class ClothingTableViewController: UITableViewController {
         let clothing = clothes[indexPath.row]
         cell.clothBrand.text = clothing.brand
         cell.clothIcon.image = clothing.imageIcon
+        
 
         switch clothing.classifiction {
         case 1: cell.clothClassification.text = "Top"
@@ -274,15 +275,41 @@ class ClothingTableViewController: UITableViewController {
         }
         
         switch clothing.subclass {
-        case 1: cell.clothSubclass.text = "Short Sleeves"
-        case 2: cell.clothSubclass.text = "No sleeves"
-        case 3: cell.clothSubclass.text = "Sweater"
-        case 4: cell.clothSubclass.text = "Jacket"
-        case 5: cell.clothSubclass.text = "Shorts"
-        case 6: cell.clothSubclass.text = "Pants"
-        case 7: cell.clothSubclass.text = "Skirt"
-        case 8: cell.clothSubclass.text = "Dress"
-        default: cell.clothSubclass.text = String(clothing.subclass)
+        case 1:
+            cell.clothSubclass.text = "Short Sleeves"
+            cell.clothIcon.image = UIImage(named:"shirt")
+            
+        case 2:
+            cell.clothSubclass.text = "No sleeves"
+            cell.clothIcon.image = UIImage(named:"sleeveless")
+            
+        case 3:
+            cell.clothSubclass.text = "Sweater"
+            cell.clothIcon.image = UIImage(named: "jacket")
+            
+        case 4:
+            cell.clothSubclass.text = "Jacket"
+            cell.clothIcon.image = UIImage(named: "jacket")
+            
+        case 5:
+            cell.clothSubclass.text = "Shorts"
+            cell.clothIcon.image = UIImage(named: "shorts")
+            
+        case 6:
+            cell.clothSubclass.text = "Pants"
+            cell.clothIcon.image = UIImage(named: "pants")
+            
+        case 7:
+            cell.clothSubclass.text = "Skirt"
+            cell.clothIcon.image = UIImage(named: "skirt")
+            
+        case 8:
+            cell.clothSubclass.text = "Dress"
+            cell.clothIcon.image = UIImage(named: "dress")
+            
+        default:
+            cell.clothSubclass.text = String(clothing.subclass)
+            cell.clothIcon.image = UIImage(named: "defaultPhoto")
         }
         
         switch clothing.status {

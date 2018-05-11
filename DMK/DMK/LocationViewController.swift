@@ -20,16 +20,25 @@ class LocationViewController: UIViewController {
         print(cityTextField.text)
         print(countryTextField.text)
         
-        let parameters: [String: Any] = [ //This is the JSON we'll be passing over.
-            "city" : cityTextField.text,
-            "country" : countryTextField.text
-        ]
-        
-        Alamofire.request("https://damitan-mo-ko.herokuapp.com/weatherget", method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .responseJSON { response in
-                print("Sent the data over... hopefully.") //It responds with the ID of the clothing item in question.
+        if (cityTextField.text != "" && countryTextField.text != ""){
+            let parameters: [String: Any] = [ //This is the JSON we'll be passing over.
+                "city" : cityTextField.text,
+                "country" : countryTextField.text
+            ]
+            
+            Alamofire.request("https://damitan-mo-ko.herokuapp.com/weatherget", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+                .responseJSON { response in
+                    print("Sent the data over... hopefully.") //It responds with the ID of the clothing item in question.
+            }
+            
+            performSegue(withIdentifier: "locationSegue", sender: sender)
+        } else {
+            let alert = UIAlertController(title: "Parameters not fulfilled", message: "Please fill the fields up.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(alert, animated: true)
         }
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

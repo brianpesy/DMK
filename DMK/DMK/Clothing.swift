@@ -18,11 +18,11 @@ class Clothing {
     var id: Int
     var material: String
     var status: Int
-    var weather: Int
+    var weather: String
     var imageIcon: UIImage?
     
     // MARK: Initialization
-    init?(brand: String, classification: Int, subclass: Int,color: String, id: Int, material: String, status: Int, weather: Int, imageIcon: UIImage?) {
+    init?(brand: String, classification: Int, subclass: Int,color: String, id: Int, material: String, status: Int, weather: String, imageIcon: UIImage?) {
         
         // Initialization should fail if no string or negative integer
 //        if brand.isEmpty || classification < 0 || color.isEmpty || id < 0 || material.isEmpty || status < 0 || weather < 0 {

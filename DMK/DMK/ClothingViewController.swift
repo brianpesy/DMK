@@ -12,6 +12,7 @@ import Alamofire
 import SwiftyJSON
 
 class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    var clothes = [Clothing]()
 
     var id = 123
     var brand = ""
@@ -20,7 +21,7 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
 //    var classification = 1
 //    var subclass = 8
     var status = 2
-    var weather = 2
+    var weather = "0,0,1,1"
     
     //MARK: Properties
     @IBOutlet weak var clothingTitle: UILabel!
@@ -71,7 +72,7 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
         }
     }
     @IBAction func refreshButton(_ sender: Any) {
-        print("hello!!!")
+//        print("hello!!!")
     }
     
     override func viewDidLoad() {
@@ -206,7 +207,7 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
 //        classification = 1
 //        subclass = 8
         status = 2
-        weather = 2
+//        weather = 2
         
 //        print(brand)
 //        print(color)
@@ -218,15 +219,33 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
             "material" : material,
             "color" : color,
             "status" : 1,
-            "weather" : 2
+            "weather" : "0,0,1,1"
         ]
-        
+                
         Alamofire.request("https://damitan-mo-ko.herokuapp.com/mobileadd", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                   print(response) //It responds with the ID of the clothing item in question.
                 print("Send new garment to server")
                 print(parameters)
         }
+        
+        /*
+         let parameters: [String: Any] = [ //This is the JSON we'll be passing over.
+         "id" :clothes[indexPath.row].id,
+         "classification" :  segmentedClassification.selectedSegmentIndex+1,
+         "subclass" : segmentedSubclass.selectedSegmentIndex+1,
+         "brand" : brand,
+         "material" : material,
+         "color" : color,
+         "status" : 1,
+         "weather" : "0,0,1,1"
+         ]
+         
+         Alamofire.request("https://damitan-mo-ko.herokuapp.com/mobileupdate", method: .put, parameters: parameters, encoding: JSONEncoding.default)
+         .responseJSON { response in
+         //                    print(response) //It responds with the ID of the clothing item in question.
+         }
+         */
 
         clothing = Clothing(brand: brand, classification: classification, subclass: subclass, color: color, id: id, material: material, status: status, weather: weather, imageIcon: imageIcon)
     }

@@ -73,7 +73,7 @@ class ClothingTableViewController: UITableViewController {
                         arr[i].append(item["brand"].stringValue)
 //                        print(arr)
                         
-                        let sweater = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:3, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: arr[i][3], imageIcon: UIImage(named: "jacket"))
+                        let sweater = Clothing(brand:arr[i][6], classification: Int(arr[i][4])!, subclass:3, color: arr[i][0], id:Int(arr[i][2])!, material:arr[i][5], status:Int(arr[i][1])!, weather: arr[i][3], imageIcon: UIImage(named: "sweater"))
                         
                         let newIndexPath = IndexPath(row: self.clothes.count, section: 0)
                         print(self.clothes.count)
@@ -288,7 +288,7 @@ class ClothingTableViewController: UITableViewController {
             
         case 3:
             cell.clothSubclass.text = "Sweater"
-            cell.clothIcon.image = UIImage(named: "jacket")
+            cell.clothIcon.image = UIImage(named: "sweater")
             
         case 4:
             cell.clothSubclass.text = "Jacket"
@@ -316,8 +316,8 @@ class ClothingTableViewController: UITableViewController {
         }
         
         switch clothing.status {
-        case 1: cell.clothStatus.text = "Out of the closet"
-        case 2: cell.clothStatus.text = "In of the closet"
+        case 1: cell.clothStatus.text = "Outside the closet"
+        case 2: cell.clothStatus.text = "Inside the closet"
         default: cell.clothStatus.text = String(clothing.status)
         }
         

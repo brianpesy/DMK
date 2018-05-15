@@ -28,7 +28,8 @@ class ClothingTableViewController: UITableViewController {
          self.navigationItem.leftBarButtonItem = self.editButtonItem
 
         // Load sample data
-        loadSampleClothes()
+        // loadSampleClothes()
+        refreshButton((Any).self)
     }
     
     @IBAction func refreshButton(_ sender: Any) {

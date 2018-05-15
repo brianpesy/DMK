@@ -109,7 +109,7 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
             navigationItem.title = clothing.brand
             clothingTitle.text = clothing.brand
             imageIcon.image = clothing.imageIcon
-            idNumber.text = String(clothing.id)
+//            idNumber.text = String(clothing.id)
             brandTextField.text = clothing.brand
             colorTextField.text = clothing.color
             materialTextField.text = clothing.material
@@ -164,7 +164,6 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateSaveButtonState()
-//        navigationItem.title = textField.text
     }
     
     // MARK: Navigations

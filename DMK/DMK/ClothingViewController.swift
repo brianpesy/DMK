@@ -142,8 +142,8 @@ class ClothingViewController: UIViewController, UITextFieldDelegate, UIImagePick
             segmentedSubclass.selectedSegmentIndex = (clothing.subclass)-1
             
             switch clothing.status {
-            case 1: statusNumber.text = "Out of the closet"
-            case 2: statusNumber.text = "In of the closet"
+            case 1: statusNumber.text = "Outside the closet"
+            case 2: statusNumber.text = "Inside the closet"
             default: statusNumber.text = String(clothing.status)
             }
         }
